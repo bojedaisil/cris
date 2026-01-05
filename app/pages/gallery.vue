@@ -4,98 +4,105 @@ useSeoMeta({
   description: 'View our portfolio of completed tape & jointing and plasterboard finishing projects across London.',
 })
 
-const categories = ['All', 'Residential', 'Commercial', 'New Build']
-const activeCategory = ref('All')
+// Массив ссылок на изображения с Google Диска
+// Формат ссылки: https://drive.google.com/uc?export=view&id=FILE_ID
+// Где FILE_ID - это ID файла из ссылки на Google Диск
+const images = ref([
+  // Правильный формат: https://drive.google.com/uc?export=view&id=FILE_ID
+  // Берёшь ID из ссылки (между /d/ и /view) и вставляешь сюда:
+  'https://lh3.googleusercontent.com/d/1BzaK_InaTyJ85UnmL56Fow1UPL3ECasi',
+  'https://drive.google.com/thumbnail?id=1WAHpMQq0WpuCzgpvtnM6SNW6smukulRK&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1BKo51T4BlVUoVywgoXBEZ9gRkXZRYhWN&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1up5cbw6yNjiCWsk5UVnR6fX7t8UQscHt&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1J28Sj3hlIZTcG92RqfQ-4nF2UbS-XzZv&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1mgwj-sPgI-TlLbnv2KoV-bu4xZZRMXf0&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1OS04Tn22OOsQyUs2DFdmo-yIHmIyiuQy&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1Nx-zL9Y8XzzTqhprvkJCPh_pVVMQ6AAA&sz=w1000',
+  'https://drive.google.com/thumbnail?id=16OwL0ak9xXlrnuEteg-pCTfcyA7DiLnk&sz=w1000',
+  'https://drive.google.com/thumbnail?id=15HH6TJuMOmNPUY5IHbArBBxlE-sYL4nJ&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1HIE5pyNMgsVwkGV_o2Q8DlI8k5dE8rQV&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1Zdr07WI7czzXCZR9zD_wUA2yoI3yZm7H&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1b2OzhTSIzgoK1gl7TdrZzv6QL7jrTzYD&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1zGv7UTFdv5Ju0YAuO69dqWHv9RjkPUER&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1XM6LejzxouIfA9qchtepPy3mCs4jT6G2&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1RG1uXuK4lvaOSHgiRxMLXXEHuODOZqe4&sz=w1000',
+  'https://drive.google.com/thumbnail?id=1lelVw5St-EhhAn82l4LIVG2hUN7tC5QJ&sz=w1000',
 
-const projects = [
-  {
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop',
-    title: 'New Build Apartments',
-    category: 'New Build',
-    location: 'East London',
-    description: 'Complete tape & jointing for 50+ unit residential development',
-  },
-  {
-    id: 2,
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop',
-    title: 'Commercial Office Fit-Out',
-    category: 'Commercial',
-    location: 'City of London',
-    description: 'High-end plasterboard finishing for modern office space',
-  },
-  {
-    id: 3,
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop',
-    title: 'Residential Extension',
-    category: 'Residential',
-    location: 'North London',
-    description: 'Quality finishing for home extension project',
-  },
-  {
-    id: 4,
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop',
-    title: 'Luxury Home Renovation',
-    category: 'Residential',
-    location: 'Chelsea',
-    description: 'Complete interior tape and jointing for high-end renovation',
-  },
-  {
-    id: 5,
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400&fit=crop',
-    title: 'Corporate Headquarters',
-    category: 'Commercial',
-    location: 'Canary Wharf',
-    description: 'Large-scale plasterboard finishing for corporate offices',
-  },
-  {
-    id: 6,
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop',
-    title: 'New Build Houses',
-    category: 'New Build',
-    location: 'Essex',
-    description: 'Tape and jointing for new housing development',
-  },
-  {
-    id: 7,
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop',
-    title: 'Victorian Conversion',
-    category: 'Residential',
-    location: 'Hampstead',
-    description: 'Careful finishing work in period property conversion',
-  },
-  {
-    id: 8,
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop',
-    title: 'Retail Space Fit-Out',
-    category: 'Commercial',
-    location: 'Oxford Street',
-    description: 'Fast-track plasterboard finishing for retail opening',
-  },
-  {
-    id: 9,
-    image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop',
-    title: 'Apartment Complex',
-    category: 'New Build',
-    location: 'South London',
-    description: 'Multi-storey residential development finishing',
-  },
-]
+  
+])
 
-const filteredProjects = computed(() => {
-  if (activeCategory.value === 'All') return projects
-  return projects.filter(p => p.category === activeCategory.value)
+const currentIndex = ref(0)
+const isTransitioning = ref(false)
+const touchStartX = ref(0)
+const touchEndX = ref(0)
+
+const totalSlides = computed(() => images.value.length)
+
+const nextSlide = () => {
+  if (isTransitioning.value) return
+  isTransitioning.value = true
+  currentIndex.value = (currentIndex.value + 1) % totalSlides.value
+  setTimeout(() => isTransitioning.value = false, 500)
+}
+
+const prevSlide = () => {
+  if (isTransitioning.value) return
+  isTransitioning.value = true
+  currentIndex.value = (currentIndex.value - 1 + totalSlides.value) % totalSlides.value
+  setTimeout(() => isTransitioning.value = false, 500)
+}
+
+const goToSlide = (index: number) => {
+  if (isTransitioning.value || index === currentIndex.value) return
+  isTransitioning.value = true
+  currentIndex.value = index
+  setTimeout(() => isTransitioning.value = false, 500)
+}
+
+// Touch/Swipe support
+const handleTouchStart = (e: TouchEvent) => {
+  if (e.touches[0]) touchStartX.value = e.touches[0].clientX
+}
+
+const handleTouchMove = (e: TouchEvent) => {
+  if (e.touches[0]) touchEndX.value = e.touches[0].clientX
+}
+
+const handleTouchEnd = () => {
+  const diff = touchStartX.value - touchEndX.value
+  const threshold = 50
+  
+  if (Math.abs(diff) > threshold) {
+    if (diff > 0) {
+      nextSlide()
+    } else {
+      prevSlide()
+    }
+  }
+}
+
+// Keyboard navigation
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'ArrowRight') nextSlide()
+  if (e.key === 'ArrowLeft') prevSlide()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
 })
 
-const selectedProject = ref<typeof projects[0] | null>(null)
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 
-const openLightbox = (project: typeof projects[0]) => {
-  selectedProject.value = project
-}
-
-const closeLightbox = () => {
-  selectedProject.value = null
-}
+// Autoplay (optional - можно раскомментировать)
+// const autoplayInterval = ref<ReturnType<typeof setInterval> | null>(null)
+// onMounted(() => {
+//   autoplayInterval.value = setInterval(nextSlide, 5000)
+// })
+// onUnmounted(() => {
+//   if (autoplayInterval.value) clearInterval(autoplayInterval.value)
+// })
 </script>
 
 <template>
@@ -106,355 +113,349 @@ const closeLightbox = () => {
       background-image="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&h=600&fit=crop"
     />
     
-    <section class="gallery section">
+    <section class="slider-section section">
       <div class="container">
-        <!-- Filter -->
-        <div class="gallery__filter">
-          <button 
-            v-for="category in categories" 
-            :key="category"
-            class="gallery__filter-btn"
-            :class="{ 'gallery__filter-btn--active': activeCategory === category }"
-            @click="activeCategory = category"
-          >
-            {{ category }}
-          </button>
+        <div class="section__header">
+          <h2 class="section__title">Project Gallery</h2>
+          <p class="section__subtitle">Swipe through our completed projects</p>
         </div>
-        
-        <!-- Grid -->
-        <TransitionGroup name="gallery" tag="div" class="gallery__grid">
+        <ClientOnly>
           <div 
-            v-for="project in filteredProjects" 
-            :key="project.id"
-            class="gallery__item"
-            @click="openLightbox(project)"
+            class="slider"
+            @touchstart="handleTouchStart"
+            @touchmove="handleTouchMove"
+            @touchend="handleTouchEnd"
           >
-            <div class="gallery__item-image">
-              <img :src="project.image" :alt="project.title" />
-              <div class="gallery__item-overlay">
-                <AIcon name="arrowRight" size="lg" />
+            <!-- Main Slider -->
+            <div class="slider__viewport">
+              <div 
+                class="slider__track"
+                :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
+              >
+                <div 
+                  v-for="(image, index) in images" 
+                  :key="index"
+                  class="slider__slide"
+                >
+                  <img 
+                    :src="image" 
+                    :alt="`Project ${index + 1}`"
+                    class="slider__image"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
-            <div class="gallery__item-content">
-              <span class="gallery__item-category">{{ project.category }}</span>
-              <h3 class="gallery__item-title">{{ project.title }}</h3>
-              <p class="gallery__item-location">
-                <AIcon name="location" size="sm" />
-                {{ project.location }}
-              </p>
+            
+            <!-- Navigation Arrows -->
+            <button 
+              class="slider__nav slider__nav--prev" 
+              @click="prevSlide"
+              :disabled="isTransitioning"
+              aria-label="Previous slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            
+            <button 
+              class="slider__nav slider__nav--next" 
+              @click="nextSlide"
+              :disabled="isTransitioning"
+              aria-label="Next slide"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            
+            <!-- Counter -->
+            <div class="slider__counter">
+              <span class="slider__counter-current">{{ String(currentIndex + 1).padStart(2, '0') }}</span>
+              <span class="slider__counter-separator">/</span>
+              <span class="slider__counter-total">{{ String(totalSlides).padStart(2, '0') }}</span>
             </div>
           </div>
-        </TransitionGroup>
+        </ClientOnly>
+        
+        <!-- Dots Navigation -->
+        <div class="slider__dots">
+          <button 
+            v-for="(_, index) in images"
+            :key="index"
+            class="slider__dot"
+            :class="{ 'slider__dot--active': currentIndex === index }"
+            @click="goToSlide(index)"
+            :aria-label="`Go to slide ${index + 1}`"
+          />
+        </div>
+        
+        <!-- Thumbnails -->
+        <div class="slider__thumbnails">
+          <button 
+            v-for="(image, index) in images"
+            :key="index"
+            class="slider__thumbnail"
+            :class="{ 'slider__thumbnail--active': currentIndex === index }"
+            @click="goToSlide(index)"
+          >
+            <img :src="image" :alt="`Thumbnail ${index + 1}`" loading="lazy" />
+          </button>
+        </div>
       </div>
     </section>
-    
-    <!-- Lightbox -->
-    <Teleport to="body">
-      <Transition name="lightbox">
-        <div v-if="selectedProject" class="lightbox" @click.self="closeLightbox">
-          <button class="lightbox__close" @click="closeLightbox">
-            <AIcon name="close" size="lg" />
-          </button>
-          
-          <div class="lightbox__content">
-            <img :src="selectedProject.image" :alt="selectedProject.title" />
-            <div class="lightbox__info">
-              <span class="lightbox__category">{{ selectedProject.category }}</span>
-              <h2 class="lightbox__title">{{ selectedProject.title }}</h2>
-              <p class="lightbox__location">
-                <AIcon name="location" size="sm" />
-                {{ selectedProject.location }}
-              </p>
-              <p class="lightbox__description">{{ selectedProject.description }}</p>
-              <AButton href="/contact" variant="primary">
-                Get a Similar Quote
-              </AButton>
-            </div>
-          </div>
-        </div>
-      </Transition>
-    </Teleport>
     
     <OCta />
   </div>
 </template>
 
 <style scoped>
-.gallery__filter {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
+.slider-section {
+  background: linear-gradient(180deg, var(--color-light) 0%, var(--color-white) 100%);
 }
 
-.gallery__filter-btn {
-  padding: 10px 24px;
-  border: 2px solid #E5E7EB;
-  border-radius: 30px;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  background: transparent;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-}
-
-.gallery__filter-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.gallery__filter-btn--active {
-  background: var(--gradient-primary);
-  border-color: var(--color-primary);
-  color: var(--color-dark);
-}
-
-.gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-.gallery__item {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
-  transition: all var(--transition-normal);
-}
-
-.gallery__item:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-}
-
-.gallery__item-image {
+.slider {
   position: relative;
-  height: 220px;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background: var(--color-dark);
+}
+
+.slider__viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
 }
 
-.gallery__item-image img {
+.slider__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
+  object-position: center;
 }
 
-.gallery__item:hover .gallery__item-image img {
-  transform: scale(1.1);
-}
-
-.gallery__item-overlay {
+/* Navigation Arrows */
+.slider__nav {
   position: absolute;
-  inset: 0;
-  background: rgba(245, 166, 35, 0.9);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity var(--transition-normal);
-}
-
-.gallery__item-overlay .icon {
-  color: var(--color-dark);
-}
-
-.gallery__item:hover .gallery__item-overlay {
-  opacity: 1;
-}
-
-.gallery__item-content {
-  padding: 20px;
-}
-
-.gallery__item-category {
-  display: inline-block;
-  padding: 4px 10px;
-  background-color: rgba(245, 166, 35, 0.1);
-  color: var(--color-primary-dark);
-  font-size: 0.75rem;
-  font-weight: 600;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.gallery__item-title {
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.gallery__item-location {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-.gallery__item-location .icon {
-  color: var(--color-primary);
-}
-
-/* Lightbox */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-.lightbox__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   color: white;
   cursor: pointer;
   transition: all var(--transition-normal);
+  z-index: 10;
 }
 
-.lightbox__close:hover {
-  background-color: var(--color-primary);
+.slider__nav:hover:not(:disabled) {
+  background: var(--color-primary);
   color: var(--color-dark);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 30px rgba(245, 166, 35, 0.4);
 }
 
-.lightbox__content {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 30px;
-  max-width: 1200px;
-  max-height: 80vh;
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-xl);
+.slider__nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.slider__nav--prev {
+  left: 20px;
+}
+
+.slider__nav--next {
+  right: 20px;
+}
+
+/* Counter */
+.slider__counter {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 10px 18px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  font-family: var(--font-heading);
+  color: white;
+  z-index: 10;
+}
+
+.slider__counter-current {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.slider__counter-separator {
+  font-size: 1rem;
+  opacity: 0.5;
+  margin: 0 2px;
+}
+
+.slider__counter-total {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+/* Dots Navigation */
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.slider__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  opacity: 0.3;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.slider__dot:hover {
+  opacity: 0.6;
+  transform: scale(1.2);
+}
+
+.slider__dot--active {
+  opacity: 1;
+  background: var(--color-primary);
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(245, 166, 35, 0.5);
+}
+
+/* Thumbnails */
+.slider__thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.slider__thumbnail {
+  width: 80px;
+  height: 60px;
+  border-radius: var(--border-radius);
   overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent;
+  opacity: 0.6;
+  transition: all var(--transition-normal);
 }
 
-.lightbox__content img {
+.slider__thumbnail:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+
+.slider__thumbnail--active {
+  opacity: 1;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.4);
+}
+
+.slider__thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.lightbox__info {
-  padding: 40px 30px;
-  display: flex;
-  flex-direction: column;
-}
-
-.lightbox__category {
-  display: inline-block;
-  padding: 6px 14px;
-  background: rgba(245, 166, 35, 0.1);
-  color: var(--color-primary-dark);
-  font-size: 0.8rem;
-  font-weight: 600;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  width: fit-content;
-}
-
-.lightbox__title {
-  font-size: 1.5rem;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-}
-
-.lightbox__location {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-
-.lightbox__location .icon {
-  color: var(--color-primary);
-}
-
-.lightbox__description {
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 30px;
-  flex: 1;
-}
-
-/* Transitions */
-.gallery-move,
-.gallery-enter-active,
-.gallery-leave-active {
-  transition: all 0.5s ease;
-}
-
-.gallery-enter-from,
-.gallery-leave-to {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.gallery-leave-active {
-  position: absolute;
-}
-
-.lightbox-enter-active,
-.lightbox-leave-active {
-  transition: all var(--transition-normal);
-}
-
-.lightbox-enter-from,
-.lightbox-leave-to {
-  opacity: 0;
-}
-
-.lightbox-enter-from .lightbox__content,
-.lightbox-leave-to .lightbox__content {
-  transform: scale(0.9);
-}
-
-@media (max-width: 1024px) {
-  .gallery__grid {
-    grid-template-columns: repeat(2, 1fr);
+/* Responsive */
+@media (max-width: 768px) {
+  .slider__nav {
+    width: 44px;
+    height: 44px;
   }
   
-  .lightbox__content {
-    grid-template-columns: 1fr;
-    max-width: 600px;
+  .slider__nav--prev {
+    left: 10px;
   }
   
-  .lightbox__content img {
-    height: 300px;
+  .slider__nav--next {
+    right: 10px;
+  }
+  
+  .slider__counter {
+    bottom: 15px;
+    left: 15px;
+    padding: 8px 14px;
+  }
+  
+  .slider__counter-current {
+    font-size: 1.2rem;
+  }
+  
+  .slider__thumbnails {
+    gap: 10px;
+  }
+  
+  .slider__thumbnail {
+    width: 60px;
+    height: 45px;
   }
 }
 
-@media (max-width: 640px) {
-  .gallery__grid {
-    grid-template-columns: 1fr;
+@media (max-width: 480px) {
+  .slider__viewport {
+    aspect-ratio: 4 / 3;
   }
   
-  .lightbox {
-    padding: 20px;
+  .slider__nav {
+    width: 38px;
+    height: 38px;
   }
   
-  .lightbox__info {
-    padding: 25px 20px;
+  .slider__nav svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .slider__dots {
+    gap: 8px;
+  }
+  
+  .slider__dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .slider__thumbnail {
+    width: 50px;
+    height: 38px;
   }
 }
 </style>

@@ -60,7 +60,7 @@ const { sendQuickMessage } = useWhatsApp()
         <div class="hero__image">
           <div class="hero__image-wrapper">
             <img 
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=700&fit=crop" 
+              src="https://drive.google.com/thumbnail?id=1RG1uXuK4lvaOSHgiRxMLXXEHuODOZqe4&sz=w1000" 
               alt="Professional plastering work"
             />
             <div class="hero__image-accent"></div>

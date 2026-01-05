@@ -14,7 +14,7 @@ const highlights = [
       <div class="about__grid">
         <div class="about__image">
           <img 
-            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&h=600&fit=crop" 
+            src='https://drive.google.com/thumbnail?id=1BzaK_InaTyJ85UnmL56Fow1UPL3ECasi&sz=w1000', 
             alt="PAC Construction team at work"
           />
           <div class="about__image-badge">
