@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const router = useRouter()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 
@@ -21,6 +22,11 @@ const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
 }
 
+// Close mobile menu after route change - more reliable than click handlers on touch devices
+router.afterEach(() => {
+  closeMobileMenu()
+})
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
   handleScroll()
@@ -42,7 +48,6 @@ onUnmounted(() => {
             v-for="link in navLinks" 
             :key="link.to" 
             :to="link.to"
-            @click="closeMobileMenu"
           >
             {{ link.label }}
           </MNavLink>
@@ -186,14 +191,19 @@ onUnmounted(() => {
     gap: 0;
     padding: 100px 30px 30px;
     background-color: var(--color-secondary);
-    transition: right var(--transition-normal);
+    transition: right var(--transition-normal), visibility 0s linear var(--transition-normal);
     box-shadow: var(--shadow-xl);
     z-index: 1002;
     overflow-y: auto;
+    pointer-events: none;
+    visibility: hidden;
   }
   
   .header__nav--open {
     right: 0;
+    pointer-events: auto;
+    visibility: visible;
+    transition: right var(--transition-normal), visibility 0s linear 0s;
   }
   
   .header__nav :deep(.nav-link) {
@@ -201,6 +211,8 @@ onUnmounted(() => {
     padding: 15px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 1.1rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .header__burger {
