@@ -68,9 +68,6 @@ watch(() => route.path, () => {
             type="button"
             aria-label="Toggle menu"
           >
-            <span></span>
-            <span></span>
-            <span></span>
           </button>
         </div>
       </div>
@@ -94,6 +91,7 @@ watch(() => route.path, () => {
   z-index: 1000;
   padding: 15px 0;
   transition: all var(--transition-normal);
+  background-color: #1A1A2E;
 }
 
 .header--scrolled {

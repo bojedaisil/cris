@@ -10,7 +10,6 @@ useSeoMeta({
     <OHero />
     <OServices />
     <OWhyChooseUs />
-    <OAboutUs />
     <OProjects />
     <OProcess />
     <OTestimonials />

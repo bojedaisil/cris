@@ -48,11 +48,6 @@ const highlights = [
               <span>{{ highlight }}</span>
             </li>
           </ul>
-          
-          <AButton href="/about" variant="primary">
-            Learn More About Us
-            <AIcon name="arrowRight" size="sm" />
-          </AButton>
         </div>
       </div>
     </div>
