@@ -68,6 +68,9 @@ watch(() => route.path, () => {
             type="button"
             aria-label="Toggle menu"
           >
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
       </div>
