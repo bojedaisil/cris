@@ -13,16 +13,16 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { 
-          name: 'description', 
-          content: 'Expert plasterboard finishing for residential & commercial projects in London. Quality tape & jointing services with smooth finishes and fast turnaround.' 
+        {
+          name: 'description',
+          content: 'Expert plasterboard finishing for residential & commercial projects in London. Quality tape & jointing services with smooth finishes and fast turnaround.'
         },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { 
-          rel: 'stylesheet', 
-          href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap' 
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap'
         },
       ],
     },
@@ -35,4 +35,8 @@ export default defineNuxtConfig({
     { path: '~/components/molecules' },
     { path: '~/components/organisms' },
   ],
+
+  routeRules: {
+    '/': { redirect: '/home' },
+  },
 })
