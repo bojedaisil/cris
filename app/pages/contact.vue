@@ -17,7 +17,6 @@ const contactInfo = [
     icon: 'email',
     title: 'Email',
     value: 'pacconstructionsolutions1@gmail.com',
-    href: 'pacconstructionsolutions1@gmail.com',
   },
   {
     icon: 'location',
