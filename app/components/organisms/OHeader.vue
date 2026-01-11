@@ -29,18 +29,29 @@ const closeMobileMenu = () => {
   document.body.style.overflow = ''
 }
 
+// Flag to prevent double navigation from click+touchend
+let isNavigating = false
+
 // Handle navigation with programmatic routing - fixes iOS Safari issues
 const handleNavClick = async (e: Event, to: string) => {
+  // Prevent default anchor behavior
   e.preventDefault()
-  e.stopPropagation()
+  
+  // Prevent double-firing from both click and touchend
+  if (isNavigating) return
+  isNavigating = true
   
   // Close menu immediately
   closeMobileMenu()
   
-  // Navigate programmatically - more reliable on iOS
-  if (route.path !== to) {
-    await navigateTo(to)
-  }
+  // Always navigate - let the router handle same-route cases
+  // This fixes iOS Safari where "/" comparison was failing
+  await navigateTo(to)
+  
+  // Reset flag after navigation completes
+  setTimeout(() => {
+    isNavigating = false
+  }, 100)
 }
 
 // Also close on route change as backup
