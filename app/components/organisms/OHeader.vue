@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const router = useRouter()
+const route = useRoute()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 
@@ -22,8 +22,8 @@ const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
 }
 
-// Close mobile menu after route change - more reliable than click handlers on touch devices
-router.afterEach(() => {
+// Close mobile menu on route change - using watch instead of router.afterEach for proper cleanup
+watch(() => route.path, () => {
   closeMobileMenu()
 })
 
