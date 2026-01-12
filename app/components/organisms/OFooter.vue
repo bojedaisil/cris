@@ -80,7 +80,7 @@ const whatsappLink = `https://wa.me/${whatsappNumber}`
           <ul class="footer__contact">
             <li>
               <AIcon name="phone" size="sm" />
-              <a href="tel:02201234567">+447366122274</a>
+              <a href="tel:+44736612227">+447366122274</a>
             </li>
             <li>
               <AIcon name="email" size="sm" />

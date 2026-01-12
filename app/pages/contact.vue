@@ -11,7 +11,7 @@ const contactInfo = [
     icon: 'phone',
     title: 'Phone',
     value: '+447366122274',
-    href: 'tel:02201234567',
+    href: 'tel:44736612227',
   },
   {
     icon: 'email',
