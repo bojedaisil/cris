@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow:
+
+Sitemap: https://tapejointing.co.uk/sitemap.xml

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const quickLinks = [
-  { to: '/home', label: 'Home' },
+  { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' },

@@ -9,7 +9,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <NuxtLink to="/home" class="logo" :class="[`logo--${variant}`]">
+  <NuxtLink to="/" class="logo" :class="[`logo--${variant}`]">
     <div class="logo__icon">
       <span class="logo__letter">P</span>
       <span class="logo__letter">A</span>

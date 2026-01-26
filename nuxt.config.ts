@@ -7,6 +7,12 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  modules: ['@nuxtjs/sitemap'],
+
+  site: {
+    url: 'https://tapejointing.co.uk',
+  },
+
   app: {
     head: {
       title: 'PAC Construction Solutions LTD - Professional Tape & Jointing Services',
@@ -36,7 +42,4 @@ export default defineNuxtConfig({
     { path: '~/components/organisms' },
   ],
 
-  routeRules: {
-    '/': { redirect: '/home' },
-  },
 })
