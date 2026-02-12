@@ -23,7 +23,7 @@ const socialLinks = [
 ]
 
 // WhatsApp number (замени на реальный номер)
-const whatsappNumber = '447123456789'
+const whatsappNumber = '447366122274'
 const whatsappLink = `https://wa.me/${whatsappNumber}`
 </script>
 
